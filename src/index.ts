@@ -4,6 +4,7 @@ import http from 'http';
 import Logging from './library/Loggin';
 import routeApi from './routes/index';
 import mongoose from 'mongoose';
+import { date } from 'joi';
 
 const router = express();
 
@@ -54,7 +55,6 @@ remoteAddress}] - STATUS:[${res.statusCode}]`);
 
     /**healthCheck    */
     router.get('/ping', (req, res, next) => res.status(200).json({ message: 'pong' }));
-    
     /**Error handling */
     router.use((req, res, next)=>{
         const error= new Error('not found');

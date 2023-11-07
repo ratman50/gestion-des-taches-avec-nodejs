@@ -13,6 +13,9 @@ export const create=async (user:IUser):Promise<IUserModel> =>{
 export const findOne=async (id:string) => {
     return await User.findById(id);
 }
+export const findByEmail=async (email:string)=>{
+    return await User.findOne({email});
+}
 export const findMany=async () => {
     return await User.find();
 }
