@@ -1,11 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import * as UserService from  '../services/UserService';
-
 const createUser = async (req:Request, res: Response, next:NextFunction)=>{
    const user= await UserService.create(req.body);
    return res.status(201).json({user})
 }
-const readUser=async (req:Request, res:Response) => {
+const readUser=async (req:Request, res:Response, next :NextFunction) => {
     const userId=req.params.id;
     const user=  await UserService.findOne(userId);
     return user ? res.status(200).json(user) : res.status(404).json(
